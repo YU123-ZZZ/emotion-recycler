@@ -1,0 +1,2757 @@
+/* ============================================================
+   情绪回收站 (Emotion Recycler) - Complete CSS
+   Warm light-themed emotional release app with frosted glass,
+   soft colors, and particle animations.
+   ============================================================ */
+
+/* --- CSS Variables --- */
+:root {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  --color-shred: #7c8594;
+  --color-burn: #e8654a;
+  --color-flush: #3aa8c1;
+  --glow-shred: rgba(124, 133, 148, 0.4);
+  --glow-burn: rgba(232, 101, 74, 0.4);
+  --glow-flush: rgba(58, 168, 193, 0.4);
+  --bg-primary: #f5edd6;
+  --bg-secondary: #ede5cc;
+  --text-primary: #3d3528;
+  --text-secondary: #7a7062;
+  --text-muted: #a89e8e;
+  /* author-link: https://github.com/YU123-ZZZ */
+  --glass-bg: rgba(255, 252, 235, 0.6);
+  --glass-border: rgba(230, 220, 190, 0.7);
+  --glass-shadow: 0 8px 32px rgba(80, 60, 20, 0.08);
+}
+
+/* --- Base Reset & Typography --- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* --- Font Families --- */
+.font-display {
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+}
+
+.font-body {
+  font-family: 'Noto Sans SC', sans-serif;
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+/* ============================================================
+   COMPONENT CLASSES
+   ============================================================ */
+
+/* --- Frosted Glass --- */
+.frosted-glass {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: var(--glass-bg);
+  /* author-link: https://github.com/YU123-ZZZ */
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255, 252, 235, 0.6);
+}
+
+.frosted-glass-strong {
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  background: rgba(255, 252, 235, 0.7);
+  border: 1px solid rgba(230, 220, 190, 0.8);
+  box-shadow: 0 12px 48px rgba(80, 60, 20, 0.1), inset 0 1px 0 rgba(255, 252, 235, 0.7);
+}
+
+/* --- Neon Text --- */
+.neon-text-shred {
+  color: #7a7062;
+  text-shadow: none;
+}
+
+.neon-text-burn {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  color: #c85a3a;
+  text-shadow: none;
+}
+
+.neon-text-flush {
+  color: #5a8a9a;
+  text-shadow: none;
+}
+
+/* --- Destroy Buttons --- */
+.btn-destroy {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  position: relative;
+  padding: 0.875rem 1.5rem;
+  border-radius: 1rem;
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.05em;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(80, 60, 20, 0.06), 0 1px 3px rgba(80, 60, 20, 0.04);
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+.btn-destroy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(80, 60, 20, 0.1), 0 2px 8px rgba(80, 60, 20, 0.06);
+}
+
+.btn-destroy:active {
+  transform: translateY(0) scale(0.97);
+  /* author-link: https://github.com/YU123-ZZZ */
+  box-shadow: 0 1px 4px rgba(80, 60, 20, 0.06);
+}
+
+.btn-destroy:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn-destroy:disabled:hover {
+  transform: none;
+  box-shadow: 0 2px 12px rgba(80, 60, 20, 0.06);
+}
+/* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+.btn-shred {
+  background: linear-gradient(135deg, #e8e4dc 0%, #d8d2c8 100%);
+  color: #6a6058;
+  border: 1px solid rgba(106, 96, 88, 0.15);
+}
+
+.btn-burn {
+  background: linear-gradient(135deg, #fde0d0 0%, #fbc0a0 100%);
+  color: #b85030;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  border: 1px solid rgba(184, 80, 48, 0.12);
+}
+
+.btn-flush {
+  background: linear-gradient(135deg, #d8e8f0 0%, #c0d8e8 100%);
+  color: #4a7a8a;
+  border: 1px solid rgba(74, 122, 138, 0.12);
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+}
+
+.btn-drift {
+  background: linear-gradient(135deg, #d0e8d8 0%, #b8d8c8 100%);
+  color: #3a8a6a;
+  border: 1px solid rgba(58, 138, 106, 0.12);
+}
+
+.neon-text-drift {
+  color: #3a8a6a;
+  text-shadow: none;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+}
+
+/* --- Text Area --- */
+.text-area-custom {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  background-image:
+    repeating-linear-gradient(
+    /* author-link: https://github.com/YU123-ZZZ */
+      transparent,
+      transparent 31px,
+      rgba(116, 160, 190, 0.2) 31px,
+      rgba(116, 160, 190, 0.2) 32px
+    );
+  background-attachment: local;
+  background-origin: content-box;
+  background-clip: content-box;
+  border: 0;
+  padding: 2.5rem 2.25rem 3.25rem;
+  resize: none;
+  outline: none;
+  color: #3d3528;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  font-size: 1.0625rem;
+  line-height: 32px;
+  font-family: 'Noto Sans SC', sans-serif;
+  caret-color: #3d3528;
+}
+
+.text-area-custom::placeholder {
+  color: #b8a888;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+}
+
+/* --- Paper Lines --- */
+.paper-lines {
+  background-image:
+    repeating-linear-gradient(
+      transparent,
+      transparent 37px,
+      rgba(150, 130, 100, 0.06) 37px,
+      rgba(150, 130, 100, 0.06) 38px
+    );
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+/* ============================================================
+   KEYFRAME ANIMATIONS
+   ============================================================ */
+
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(1deg); }
+  75% { transform: translateY(4px) rotate(-0.5deg); }
+}
+
+@keyframes pulseGlow {
+/* author-link: https://github.com/YU123-ZZZ */
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.03); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(24px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeOutDown {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  100% { opacity: 0; transform: translateY(24px) scale(0.96); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+
+@keyframes breathe {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.55; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes screenShake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-4px, -2px) rotate(-0.5deg); }
+  20% { transform: translate(4px, 2px) rotate(0.5deg); }
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  30% { transform: translate(-3px, 3px) rotate(-0.3deg); }
+  40% { transform: translate(3px, -2px) rotate(0.3deg); }
+  50% { transform: translate(-2px, 2px) rotate(-0.2deg); }
+  60% { transform: translate(2px, -3px) rotate(0.2deg); }
+  70% { transform: translate(-2px, 1px) rotate(-0.1deg); }
+  80% { transform: translate(2px, -1px) rotate(0.1deg); }
+  90% { transform: translate(-1px, 1px) rotate(0deg); }
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+@keyframes flashWhite {
+  0% { opacity: 0; }
+  10% { opacity: 0.7; }
+  100% { opacity: 0; }
+}
+
+@keyframes flashRed {
+  0% { opacity: 0; }
+  8% { opacity: 0.4; }
+  100% { opacity: 0; }
+}
+/* author-link: https://github.com/YU123-ZZZ */
+
+@keyframes flashBlue {
+  0% { opacity: 0; }
+  8% { opacity: 0.3; }
+  100% { opacity: 0; }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+}
+
+@keyframes scaleIn {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes floatMessage {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+  15% { opacity: 1; transform: translateY(0) scale(1); }
+  85% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-30px) scale(0.97); }
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+.animated-bg {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  background: linear-gradient(-45deg, #f5edd6, #f0e8cc, #f7f1da, #f2ead0);
+  background-size: 400% 400%;
+  animation: bgShift 30s ease infinite;
+  will-change: background-position;
+}
+
+.float-anim {
+  animation: float 5s ease-in-out infinite;
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+.pulse-glow-anim {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, var(--text-primary) 0%, #8a7a60 50%, var(--text-primary) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+/* author-link: https://github.com/YU123-ZZZ */
+
+.screen-shake {
+  animation: screenShake 0.5s ease-out;
+}
+
+.flash-overlay {
+  pointer-events: none;
+  position: absolute;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  inset: 0;
+  z-index: 50;
+}
+
+/* ============================================================
+   SCROLLBAR STYLES
+   ============================================================ */
+
+textarea {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(120, 100, 70, 0.15) transparent;
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+
+textarea::-webkit-scrollbar {
+  width: 2px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+textarea::-webkit-scrollbar-thumb {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  background: rgba(120, 100, 70, 0.15);
+  border-radius: 1px;
+}
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+   /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+::selection {
+  background: rgba(200, 170, 100, 0.25);
+  color: var(--text-primary);
+}
+
+::-moz-selection {
+  background: rgba(200, 170, 100, 0.25);
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   LAYOUT - APP CONTAINER
+   ============================================================ */
+   /* author-link: https://github.com/YU123-ZZZ */
+
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  animation: bgShift 30s ease infinite;
+  background: linear-gradient(-45deg, #f5edd6, #f0e8cc, #f7f1da, #f2ead0);
+  background-size: 400% 400%;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  will-change: background-position;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.app-container.shaking {
+  animation: screenShake 0.5s ease-out;
+}
+
+/* --- Background Glows --- */
+.bg-glow {
+  position: absolute;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  border-radius: 9999px;
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.bg-glow-1 {
+  top: 10%;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  left: 5%;
+  width: 600px;
+  height: 600px;
+  background: rgba(220, 190, 120, 0.12);
+  filter: blur(80px);
+}
+
+.bg-glow-2 {
+  bottom: 5%;
+  right: -5%;
+  width: 500px;
+  height: 500px;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  background: rgba(200, 180, 130, 0.1);
+  filter: blur(60px);
+  animation-delay: 2s;
+}
+
+.bg-glow-3 {
+  top: 40%;
+  left: 50%;
+  width: 350px;
+  height: 350px;
+  /* author-link: https://github.com/YU123-ZZZ */
+  background: rgba(210, 195, 140, 0.08);
+  filter: blur(50px);
+  animation-delay: 4s;
+}
+
+/* --- Noise Overlay --- */
+.noise-overlay {
+/* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+}
+
+/* --- Main Content --- */
+.main-content {
+  position: relative;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  z-index: 5;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-icon {
+/* author-link: https://github.com/YU123-ZZZ */
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255, 252, 235, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 5s ease-in-out infinite;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+}
+
+.app-title {
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  font-size: 1.375rem;
+  line-height: 1.75rem;
+  letter-spacing: 0.15em;
+  color: #3d3528;
+}
+
+.app-subtitle {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  font-size: 10px;
+  color: #b8a888;
+  letter-spacing: 0.25em;
+  font-family: 'Noto Sans SC', sans-serif;
+  margin-top: 0.125rem;
+  text-transform: uppercase;
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.icon-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 1rem;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255, 252, 235, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8a7a60;
+  /* author-link: https://github.com/YU123-ZZZ */
+  transition: all 0.3s;
+}
+
+.icon-btn:hover {
+  color: #3d3528;
+  background: rgba(255, 252, 235, 0.7);
+}
+
+.about-trigger {
+  width: auto;
+  padding: 0 0.75rem;
+  gap: 0.35rem;
+}
+/* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+.about-trigger-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.header-tool-label {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.header-tool-btn {
+  width: auto;
+  min-width: 2.5rem;
+  padding: 0 0.68rem;
+  gap: 0.35rem;
+}
+
+.voice-control {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.voice-lang-btn {
+  min-height: 2.1rem;
+  padding: 0 0.45rem;
+  border: 1px solid var(--glass-border);
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  border-radius: 0.55rem;
+  background: var(--glass-bg);
+  color: #6d604d;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.7rem;
+  white-space: nowrap;
+  cursor: pointer;
+  /* author-link: https://github.com/YU123-ZZZ */
+}
+
+.voice-lang-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.4rem);
+  z-index: 60;
+  min-width: 9rem;
+  padding: 0.35rem;
+  border: 1px solid rgba(190, 160, 100, 0.28);
+  border-radius: 0.5rem;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  background: rgba(255, 252, 235, 0.98);
+  box-shadow: 0 10px 28px rgba(80, 60, 20, 0.16);
+}
+
+.voice-lang-option {
+  display: block;
+  width: 100%;
+  min-height: 2rem;
+  padding: 0.4rem 0.55rem;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  border: 0;
+  border-radius: 0.35rem;
+  background: transparent;
+  color: #4a4030;
+  text-align: left;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.voice-lang-option.active,
+.voice-lang-option:hover {
+  background: rgba(202, 177, 110, 0.16);
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  color: #5c4821;
+}
+
+/* ============================================================
+   INPUT AREA
+   ============================================================ */
+
+.input-wrapper {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  position: relative;
+  flex: 1 1 0%;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-section {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  /* author-link: https://github.com/YU123-ZZZ */
+  min-height: 0;
+  transition: all 0.7s ease-out;
+}
+
+.destroy-section {
+  transition: all 0.5s ease-out;
+}
+
+.input-container {
+  position: relative;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  flex: 1 1 0%;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background-color: rgba(255, 247, 207, 0.92);
+  border: 1px solid rgba(198, 173, 105, 0.42);
+  border-left: 4px solid rgba(190, 96, 82, 0.38);
+  box-shadow: 0 12px 32px rgba(99, 74, 27, 0.12), inset 0 1px 0 rgba(255, 255, 245, 0.8);
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  transition: backdrop-filter 0.5s, border-color 0.5s, box-shadow 0.5s;
+}
+
+.input-container.focused {
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  background-color: rgba(255, 248, 214, 0.98);
+  border: 1px solid rgba(194, 160, 82, 0.58);
+  border-left: 4px solid rgba(190, 88, 76, 0.5);
+  box-shadow: 0 14px 36px rgba(80, 60, 20, 0.14), inset 0 1px 0 rgba(255, 255, 245, 0.88),
+    0 0 0 2px rgba(200, 170, 100, 0.16);
+    /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+}
+
+.input-container:not(.focused) {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background-color: rgba(255, 247, 207, 0.92);
+  border: 1px solid rgba(198, 173, 105, 0.42);
+  border-left: 4px solid rgba(190, 96, 82, 0.38);
+  box-shadow: 0 12px 32px rgba(99, 74, 27, 0.12), inset 0 1px 0 rgba(255, 255, 245, 0.8);
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+}
+
+.input-gradient-top {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5rem;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255, 252, 235, 0.3), transparent);
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+}
+
+.input-gradient-bottom {
+/* author-link: https://github.com/YU123-ZZZ */
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5rem;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(255, 252, 235, 0.3), transparent);
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+}
+
+.privacy-hint {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  font-size: 10px;
+  color: #b8a888;
+  font-family: 'Noto Sans SC', sans-serif;
+  pointer-events: none;
+}
+
+.char-count {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  position: absolute;
+  right: 0.9rem;
+  bottom: 0.75rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 1.65rem;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid rgba(173, 146, 82, 0.22);
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  border-radius: 999px;
+  background: rgba(255, 252, 230, 0.82);
+  box-shadow: 0 2px 8px rgba(80, 60, 20, 0.06);
+  pointer-events: none;
+}
+
+.char-count-icon {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  font-size: 9px;
+  color: #b8a888;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.char-count-num {
+  font-size: 11px;
+  color: #8a7a60;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-variant-numeric: tabular-nums;
+  -webkit-user-select: none;
+  /* author-link: https://github.com/YU123-ZZZ */
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* ============================================================
+   DESTROY BUTTONS
+   ============================================================ */
+
+.destroy-buttons {
+/* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.btn-destroy .icon-label {
+  display: flex;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-destroy .sub-label {
+  font-size: 9px;
+  color: inherit;
+  opacity: 0.5;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  letter-spacing: 0.2em;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.footer {
+  text-align: center;
+  padding-bottom: 1rem;
+  padding-top: 0.25rem;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+}
+
+.footer p {
+  font-size: 11px;
+  color: #b8a888;
+  font-family: 'Noto Sans SC', sans-serif;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+/* author-link: https://github.com/YU123-ZZZ */
+
+.footer p:hover {
+  color: #8a7a60;
+}
+
+/* ============================================================
+   OVERLAYS - CANVAS
+   ============================================================ */
+   /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+.canvas-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.particle-canvas {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================================
+   OVERLAYS - FEEDBACK MESSAGE
+   ============================================================ */
+   /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+.feedback-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.feedback-content {
+  text-align: center;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  padding-left: 2rem;
+  padding-right: 2rem;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.feedback-text {
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  font-size: 1.75rem;
+  /* author-link: https://github.com/YU123-ZZZ */
+  line-height: 1.625;
+  position: relative;
+  color: #4a4030;
+  text-shadow: none;
+}
+
+.feedback-glow {
+  position: absolute;
+  inset: 0;
+  background: rgba(220, 195, 130, 0.15);
+  filter: blur(100px);
+  border-radius: 9999px;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  transform: scale(3);
+}
+
+.feedback-dots {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.feedback-dot {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 9999px;
+  background: #c8a878;
+  animation: breathe 3.5s ease-in-out infinite;
+}
+
+.feedback-dot:nth-child(1) { animation-delay: 0s; }
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+.feedback-dot:nth-child(2) { animation-delay: 0.6s; }
+.feedback-dot:nth-child(3) { animation-delay: 1.2s; }
+.feedback-dot:nth-child(4) { animation-delay: 1.8s; }
+.feedback-dot:nth-child(5) { animation-delay: 2.4s; }
+
+.feedback-hint {
+  margin-top: 1.25rem;
+  font-size: 11px;
+  color: #b8a888;
+  font-family: 'Noto Sans SC', sans-serif;
+  letter-spacing: 0.25em;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+}
+
+/* ============================================================
+   OVERLAYS - DRIFT BOTTLE
+   ============================================================ */
+
+.drift-overlay {
+  position: absolute;
+  inset: 0;
+  /* author-link: https://github.com/YU123-ZZZ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.drift-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(60, 50, 30, 0.15);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+}
+
+.drift-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  justify-content: center;
+}
+
+.drift-sea {
+  position: absolute;
+  top: 61%;
+  left: 50%;
+  width: min(72vw, 34rem);
+  height: 7rem;
+  transform: translate3d(-50%, 1.5rem, 0) scaleY(0.75);
+  opacity: 0;
+  overflow: hidden;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  border-radius: 50% 50% 42% 42%;
+  background: linear-gradient(
+    180deg,
+    rgba(164, 214, 220, 0.7),
+    rgba(83, 158, 176, 0.5) 48%,
+    rgba(53, 119, 143, 0.2)
+  );
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.7), 0 14px 30px rgba(55, 110, 130, 0.12);
+  transition: opacity 500ms ease, transform 900ms ease;
+  will-change: transform, opacity;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  z-index: 1;
+}
+
+.drift-sea.active {
+  opacity: 0.82;
+  transform: translate3d(-50%, 0, 0) scaleY(0.75);
+}
+/* author-link: https://github.com/YU123-ZZZ */
+
+.drift-sea-shine,
+.drift-sea-wave {
+  position: absolute;
+  left: 8%;
+  width: 84%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.58);
+  transform: translate3d(0, 0, 0);
+}
+
+.drift-sea-shine {
+/* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  top: 18%;
+  opacity: 0.7;
+}
+
+.drift-sea-wave {
+  border-radius: 50%;
+  animation: driftSeaWave 4.8s ease-in-out infinite;
+}
+
+.drift-sea-wave-1 { top: 34%; }
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+.drift-sea-wave-2 { top: 54%; width: 68%; left: 18%; animation-delay: -1.6s; opacity: 0.58; }
+.drift-sea-wave-3 { top: 72%; width: 54%; left: 25%; animation-delay: -3.2s; opacity: 0.38; }
+
+@keyframes driftSeaWave {
+  0%, 100% { transform: translate3d(-2%, 0, 0) scaleX(0.96); }
+  50% { transform: translate3d(2%, 2px, 0) scaleX(1.04); }
+}
+
+/* --- Paper --- */
+.drift-paper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  transform: translate(-50%, 100vh);
+  z-index: 2;
+  perspective: 800px;
+}
+
+.drift-paper.entering {
+  animation: paperEnter var(--paper-enter-ms, 900ms) cubic-bezier(0.34, 1.26, 0.64, 1) forwards;
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+.drift-paper.rolling {
+  animation: paperRoll var(--paper-roll-ms, 1300ms) ease-in-out forwards;
+}
+
+.drift-paper-inner {
+  width: 14rem;
+  min-height: 10rem;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.drift-paper-inner::before,
+.drift-paper-inner::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 12;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.drift-paper-inner::before {
+  width: 2.25rem;
+  height: 8rem;
+  border: 1px solid rgba(150, 126, 78, 0.42);
+  border-radius: 999px;
+  background:
+    repeating-linear-gradient(0deg, rgba(126, 101, 57, 0.08) 0 1px, transparent 1px 12px),
+    linear-gradient(90deg, #fffaf0 0%, #eadcb8 45%, #c5ae78 100%);
+  box-shadow: 0 8px 16px rgba(70, 48, 18, 0.2), inset 0 3px 4px rgba(255, 255, 255, 0.72), inset 0 -4px 5px rgba(92, 67, 30, 0.16);
+  transform: translate(-50%, -50%) scaleY(0.18);
+}
+
+.drift-paper-inner::after {
+  width: 2.28rem;
+  height: 2.28rem;
+  margin-top: 3.98rem;
+  border-radius: 50%;
+  border: 1px solid rgba(139, 112, 62, 0.52);
+  background: repeating-radial-gradient(circle at 48% 50%, #f8efd7 0 2px, #d6c18f 3px 5px, #b79c62 6px 7px);
+  box-shadow: inset 1px 2px 3px rgba(255, 255, 255, 0.65), 0 -2px 4px rgba(91, 65, 25, 0.2);
+  transform: translate(-50%, -50%) scale(0.2);
+}
+
+.drift-paper.rolling .drift-paper-inner::before {
+  animation: cylinderBody var(--paper-roll-ms, 1300ms) ease-in-out forwards;
+}
+
+.drift-paper.rolling .drift-paper-inner::after {
+  animation: cylinderEnd var(--paper-roll-ms, 1300ms) ease-in-out forwards;
+}
+
+.drift-paper-sheet {
+  position: absolute;
+  inset: 0;
+  height: 10rem;
+  padding: 0.85rem 0.8rem;
+  background: linear-gradient(180deg, #faf5e8 0%, #f5edd6 40%, #efe5c8 100%);
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(80, 60, 20, 0.15), 0 1px 4px rgba(80, 60, 20, 0.08),
+  /* author-link: https://github.com/YU123-ZZZ */
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(200, 180, 140, 0.3);
+  overflow: hidden;
+  transform: translate3d(calc(var(--sheet-index, 0) * 0.42rem), calc(var(--sheet-index, 0) * 0.34rem), calc(var(--sheet-index, 0) * -1px)) rotate(var(--sheet-tilt, 0deg));
+}
+
+.drift-paper-sheet::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  left: 2rem;
+  width: 1px;
+  height: 100%;
+  background: rgba(220, 100, 100, 0.2);
+}
+
+.drift-paper-sheet::after {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 1.6rem,
+    rgba(100, 140, 180, 0.08) 1.6rem,
+    rgba(100, 140, 180, 0.08) calc(1.6rem + 1px)
+    /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  );
+  pointer-events: none;
+}
+
+.drift-paper-sheet:first-child {
+  z-index: 4;
+}
+
+.drift-paper-sheet:nth-child(2) { z-index: 3; }
+.drift-paper-sheet:nth-child(3) { z-index: 2; }
+.drift-paper-sheet:nth-child(4) { z-index: 1; }
+
+.drift-paper-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.625rem;
+  color: #4a4030;
+  line-height: 0.92rem;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  text-align: left;
+  margin: 0;
+  padding-left: 0.55rem;
+  word-break: break-all;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Bottle --- */
+.drift-bottle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* author-link: https://github.com/YU123-ZZZ */
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 3;
+}
+
+.drift-bottle.entering {
+  animation: bottleEnter var(--bottle-enter-ms, 1100ms) cubic-bezier(0.34, 1.28, 0.64, 1) forwards;
+}
+
+.drift-bottle.throwing {
+/* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  animation: bottleThrow var(--bottle-throw-ms, 1800ms) ease-in-out forwards;
+  filter: saturate(0.8);
+}
+
+.drift-bottle-svg {
+  width: 5rem;
+  height: 7.5rem;
+  filter: drop-shadow(0 4px 12px rgba(80, 60, 20, 0.15));
+}
+
+#driftCork {
+  transition: transform 0.3s ease-out;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  transform-origin: center bottom;
+}
+
+#driftCork.closed {
+  transform: translateY(-2px);
+}
+
+#driftScrollInBottle {
+  transition: opacity 0.3s ease-out;
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+/* --- Scroll flying into bottle --- */
+.drift-scroll-fly {
+  position: absolute;
+  width: 8px;
+  height: 20px;
+  background: #f5edd6;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  border: 1px solid #d8c8a0;
+  border-radius: 999px;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.drift-scroll-fly.flying {
+/* author-link: https://github.com/YU123-ZZZ */
+  animation: scrollIntoBottle 0.6s ease-in forwards;
+}
+
+/* --- Done phase --- */
+.drift-done-phase {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  animation: fadeInUp 0.6s ease-out forwards;
+  z-index: 4;
+}
+
+.drift-waves-container {
+  position: relative;
+  width: 6rem;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drift-waves-large {
+  width: 4rem;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  height: 4rem;
+  color: #8a7a60;
+  animation: float 3s ease-in-out infinite;
+}
+
+.drift-ripple {
+  position: absolute;
+  inset: -10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(200, 170, 100, 0.25);
+  animation: ripple 2s ease-out infinite;
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+.drift-ripple-2 {
+  animation-delay: 0.8s;
+}
+
+.drift-done-text {
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  font-size: 1.25rem;
+  color: #8a7a60;
+  text-align: center;
+  /* author-link: https://github.com/YU123-ZZZ */
+}
+
+.drift-subtext {
+  font-size: 0.8125rem;
+  color: #8a7a60;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-align: center;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  margin-top: 0.25rem;
+}
+
+/* ============================================================
+   DRIFT KEYFRAMES
+   ============================================================ */
+
+@keyframes paperEnter {
+  0% {
+    transform: translate(-50%, 100vh) rotate(3deg);
+    opacity: 0;
+    /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes paperRoll {
+  0% {
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  72% {
+    transform: translate(-50%, -50%) scale(0.94);
+    opacity: 1;
+  }
+  90% {
+    transform: translate(-50%, -50%) scale(0.88) rotate(-3deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -58%) scale(0.48) rotate(-3deg);
+    opacity: 0;
+  }
+}
+
+.drift-paper.rolling .drift-paper-sheet {
+  animation: sheetCurl var(--paper-roll-ms, 1300ms) ease-in-out forwards;
+}
+
+@keyframes sheetCurl {
+  0% { opacity: 1; filter: none; }
+  36% { opacity: 1; transform: translate3d(0, 0, 0) rotate(0deg) scaleY(0.86); }
+  68% { opacity: 0.7; transform: translate3d(0, 0, 0) rotate(0deg) scale(0.24, 0.62); filter: brightness(0.97); }
+  82%, 100% { opacity: 0; transform: translate3d(0, 0, 0) rotate(0deg) scale(0.14, 0.5); }
+}
+
+@keyframes cylinderBody {
+  0%, 38% { opacity: 0; transform: translate(-50%, -50%) scaleY(0.18); }
+  62% { opacity: 0.72; transform: translate(-50%, -50%) scaleY(0.65); }
+  78%, 94% { opacity: 1; transform: translate(-50%, -50%) scaleY(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+}
+
+@keyframes cylinderEnd {
+  0%, 48% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
+  72%, 94% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+}
+
+@keyframes bottleEnter {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  0% {
+    transform: translate(-50%, 200%) scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  /* author-link: https://github.com/YU123-ZZZ */
+}
+
+@keyframes bottleThrow {
+  0% {
+    transform: translate3d(-50%, -50%, 0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  32% {
+    transform: translate3d(-50%, -145%, 0) scale(0.9) rotate(-9deg);
+    opacity: 1;
+  }
+  62% {
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+    transform: translate3d(calc(-50% + 9vw), calc(-50% + 12vh), 0) scale(0.68) rotate(6deg);
+    opacity: 0.9;
+  }
+  76% {
+    transform: translate3d(calc(-50% + 13vw), calc(-50% + 10vh), 0) scale(0.52) rotate(-3deg);
+    opacity: 0.78;
+  }
+  100% {
+    transform: translate3d(calc(-50% + 24vw), calc(-50% - 2vh), 0) scale(0.2) rotate(4deg);
+    opacity: 0.38;
+    /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  }
+}
+
+@keyframes scrollIntoBottle {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -200%) scale(1.5);
+    /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+}
+
+/* ============================================================
+   MODAL BASE (HISTORY + LANGUAGE)
+   ============================================================ */
+
+.modal-overlay {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+}
+
+.modal-backdrop {
+/* author-link: https://github.com/YU123-ZZZ */
+  position: absolute;
+  inset: 0;
+  background: rgba(60, 50, 30, 0.2);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+}
+
+.modal-panel {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  max-height: 75vh;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+.modal-panel.language-panel {
+  max-width: 20rem;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  animation: scaleIn 0.25s ease-out forwards;
+}
+
+.modal-panel.history-panel {
+  max-width: 32rem;
+}
+
+.modal-content {
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  background: rgba(255, 252, 235, 0.8);
+  border: 1px solid rgba(230, 220, 190, 0.85);
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  box-shadow: 0 12px 48px rgba(80, 60, 20, 0.12), inset 0 1px 0 rgba(255, 252, 235, 0.8);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1.25rem;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  padding-bottom: 0.75rem;
+}
+
+.modal-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  /* author-link: https://github.com/YU123-ZZZ */
+}
+
+.modal-title {
+  font-family: 'ZCOOL QingKe HuangYou', 'Noto Sans SC', sans-serif;
+  font-size: 1.375rem;
+  color: #3d3528;
+  letter-spacing: 0.05em;
+}
+
+.modal-title-icon {
+  width: 1.25rem;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  height: 1.25rem;
+  color: #c8823c;
+}
+
+.modal-close {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.75rem;
+  display: flex;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  align-items: center;
+  justify-content: center;
+  color: #8a7a60;
+  transition: all 0.2s;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #3d3528;
+  background: rgba(80, 60, 20, 0.08);
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+/* ============================================================
+   HISTORY PANEL
+   ============================================================ */
+
+.history-privacy-badge {
+  display: flex;
+  align-items: center;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  margin: 0 1.5rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(220, 195, 130, 0.12) 0%, rgba(200, 185, 140, 0.1) 100%);
+  border: 1px solid rgba(120, 100, 70, 0.06);
+}
+
+.history-privacy-text {
+  font-size: 0.8125rem;
+  color: #8a7a60;
+  font-family: 'Noto Sans SC', sans-serif;
+  /* author-link: https://github.com/YU123-ZZZ */
+  line-height: 1.5;
+}
+
+.history-list {
+  padding: 1rem 1.5rem;
+  overflow: hidden;
+  max-height: 50vh;
+  position: relative;
+}
+
+.history-float-container {
+/* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+}
+
+.history-float-msg {
+  position: absolute;
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  font-size: 1.05rem;
+  color: #4a4030;
+  font-family: 'Noto Sans SC', sans-serif;
+  line-height: 1.6;
+  text-align: center;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  letter-spacing: 0.02em;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, rgba(220, 195, 130, 0.1) 0%, rgba(200, 185, 140, 0.08) 100%);
+  opacity: 0;
+  transform: translateY(30px) scale(0.96);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  pointer-events: none;
+}
+
+.history-float-msg.visible {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.history-float-msg.fade-out {
+  opacity: 0;
+  transform: translateY(-25px) scale(0.97);
+  transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+}
+
+.history-footer {
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  /* author-link: https://github.com/YU123-ZZZ */
+  border-top: 1px solid rgba(120, 100, 70, 0.06);
+}
+
+.history-footer p {
+  font-size: 0.8125rem;
+  color: #b8a888;
+  font-family: 'Noto Sans SC', sans-serif;
+  letter-spacing: 0.1em;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+}
+
+/* ============================================================
+   LANGUAGE PANEL
+   ============================================================ */
+
+.lang-list {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
+.lang-list > * + * {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  margin-top: 0.375rem;
+}
+
+.lang-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  transition: all 0.2s;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.lang-btn.active {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  background: rgba(200, 170, 100, 0.12);
+  border-color: rgba(200, 170, 100, 0.25);
+}
+
+.lang-btn:hover {
+  background: rgba(80, 60, 20, 0.03);
+}
+
+.lang-flag {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  /* author-link: https://github.com/YU123-ZZZ */
+}
+
+.lang-name {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.9375rem;
+  color: #8a7a60;
+}
+
+.lang-name.active {
+/* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  color: #3d3528;
+}
+
+/* ============================================================
+   ABOUT PANEL
+   ============================================================ */
+
+.modal-panel.about-panel {
+  max-width: 34rem;
+  max-height: min(88vh, 46rem);
+  max-height: min(88dvh, 46rem);
+  display: flex;
+  flex-direction: column;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+}
+
+.about-panel .modal-content {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+}
+
+.about-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  padding: 0.8rem 1.5rem 0;
+}
+
+.about-tab {
+  min-height: 2.6rem;
+  padding: 0.55rem 0.8rem;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  border: 1px solid rgba(170, 145, 95, 0.22);
+  border-radius: 0.8rem;
+  background: rgba(255, 252, 235, 0.46);
+  color: #8a7a60;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+/* author-link: https://github.com/YU123-ZZZ */
+
+.about-tab:hover {
+  color: #5a4e3b;
+  border-color: rgba(150, 120, 70, 0.34);
+}
+
+.about-tab.active {
+/* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  color: #554936;
+  border-color: rgba(150, 120, 70, 0.38);
+  background: rgba(255, 248, 218, 0.9);
+  box-shadow: 0 0.3rem 0.8rem rgba(100, 80, 45, 0.08);
+}
+
+.about-tab:focus-visible {
+  outline: 2px solid rgba(120, 100, 70, 0.42);
+  outline-offset: 2px;
+}
+
+.about-body {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  padding: 1.25rem 1.5rem;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  display: flex;
+  flex-direction: column;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  gap: 1rem;
+}
+
+.about-section {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(170, 145, 95, 0.16);
+  background: rgba(255, 252, 235, 0.48);
+}
+
+.about-section[hidden] {
+  display: none !important;
+}
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+.about-section-title {
+  margin: 0 0 0.85rem;
+  color: #5a4e3b;
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+}
+/* author-link: https://github.com/YU123-ZZZ */
+
+.about-feature-intro {
+  margin-bottom: 0.85rem;
+}
+
+.about-feature-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.about-feature-item {
+/* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  min-width: 0;
+  padding: 0.7rem;
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(120, 100, 70, 0.08);
+}
+
+.about-feature-icon {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  flex: 0 0 auto;
+  width: 1.7rem;
+  height: 1.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.55rem;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  background: rgba(120, 100, 70, 0.08);
+  color: #7a6a50;
+  font-size: 0.85rem;
+}
+
+.about-feature-item h4 {
+  margin: 0 0 0.18rem;
+  color: #554936;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+}
+
+.about-feature-item p {
+  margin: 0;
+  color: #8a7a60;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+/* author-link: https://github.com/YU123-ZZZ */
+
+.feature-burn .about-feature-icon { color: #b85030; background: rgba(232, 101, 74, 0.1); }
+.feature-flush .about-feature-icon { color: #4a7a8a; background: rgba(58, 168, 193, 0.1); }
+.feature-drift .about-feature-icon { color: #3a8a6a; background: rgba(58, 138, 106, 0.1); }
+.feature-voice .about-feature-icon { color: #c8823c; background: rgba(200, 130, 60, 0.1); }
+.feature-save .about-feature-icon { color: #6c8a58; background: rgba(120, 180, 100, 0.1); }
+.feature-capacity .about-feature-icon { color: #8a6b2d; background: rgba(205, 166, 70, 0.12); }
+.feature-language .about-feature-icon { color: #556f9b; background: rgba(85, 111, 155, 0.1); }
+.feature-tech .about-feature-icon { color: #725f8f; background: rgba(114, 95, 143, 0.1); font-size: 0.64rem; }
+
+html[lang="ru"] .app-title,
+html[lang="ru"] .modal-title,
+html[lang="ru"] .footer p,
+/* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+html[lang="ru"] .history-footer p,
+html[lang="ru"] .about-paragraph,
+html[lang="ru"] .about-section-title {
+  letter-spacing: 0.01em;
+}
+
+html[lang="ru"] .app-title {
+  font-family: 'Noto Sans SC', sans-serif;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+}
+
+html[lang="ru"] .header-tool-btn,
+html[lang="ru"] .about-trigger {
+  padding-left: 0.48rem;
+  padding-right: 0.48rem;
+}
+
+html[lang="ru"] .header-tool-label,
+html[lang="ru"] .about-trigger-label {
+  font-size: 0.7rem;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  letter-spacing: 0;
+}
+
+html[lang="ru"] .header-actions {
+  gap: 0.25rem;
+}
+
+html[lang="ru"] .header-toggle-btn {
+  padding: 0.375rem 0.42rem;
+  font-size: 0.625rem;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+}
+
+html[lang="ru"] .voice-btn {
+  padding: 0 0.48rem;
+}
+
+html[lang="ru"] .voice-lang-btn {
+/* author-link: https://github.com/YU123-ZZZ */
+  padding: 0 0.35rem;
+  font-size: 0.64rem;
+}
+
+.about-site-section {
+  text-align: left;
+}
+
+.about-readme-link {
+  margin: 1.15rem 0 0;
+  text-align: center;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  display: block;
+  padding: 0.3rem 0.45rem;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.6;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  color: #71551d;
+}
+
+.about-paragraph {
+  font-size: 0.9375rem;
+  color: #6a6050;
+  font-family: 'Noto Sans SC', sans-serif;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.about-belief {
+  text-align: center;
+  color: #8a7a60;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.about-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(180, 160, 120, 0.3), transparent);
+  margin: 1.25rem 0;
+}
+
+.about-author {
+/* author-link: https://github.com/YU123-ZZZ */
+  text-align: center;
+  color: #6a6050;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.about-author a {
+  color: #71551d;
+  font-weight: 600;
+  text-decoration-color: rgba(113, 85, 29, 0.42);
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  text-underline-offset: 0.18em;
+}
+
+.about-author a:hover {
+  color: #65502b;
+}
+
+.about-donate {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  text-align: center;
+  color: #b8a888;
+  font-size: 0.8125rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.about-qrcode {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  margin-top: 1rem;
+}
+
+.about-qrcode-img {
+  width: 100%;
+  max-width: 400px;
+  display: block;
+  border-radius: 8px;
+  pointer-events: none;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+}
+
+.about-qrcode-shield {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  cursor: default;
+}
+
+.header-toggle {
+/* author-link: https://github.com/YU123-ZZZ */
+  display: flex;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+}
+
+.header-toggle-btn {
+  padding: 0.375rem 0.625rem;
+  font-size: 0.6875rem;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #8a7a60;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+}
+
+.header-toggle-btn.active {
+  color: #fff;
+}
+
+.header-toggle-btn:first-child.active {
+  background: rgba(120, 180, 100, 0.85);
+}
+
+.header-toggle-btn:last-child.active {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  background: rgba(180, 120, 100, 0.7);
+}
+
+.header-toggle-btn:hover:not(.active) {
+  background: rgba(80, 60, 20, 0.06);
+}
+
+/* ============================================================
+   VOICE INPUT BUTTON
+   ============================================================ */
+   /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+.voice-btn {
+  position: relative;
+  width: auto;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 0.68rem;
+  gap: 0.35rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  /* author-link: https://github.com/YU123-ZZZ */
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255, 252, 235, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8a7a60;
+  transition: all 0.3s;
+  cursor: pointer;
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+}
+
+.voice-btn:hover {
+  color: #3d3528;
+  background: rgba(255, 252, 235, 0.7);
+}
+
+.voice-btn.listening {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(200, 130, 60, 0.12);
+  border: 1px solid rgba(200, 130, 60, 0.35);
+  color: #c8823c;
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  animation: voicePulse 2s ease-in-out infinite;
+}
+
+@keyframes voicePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200, 130, 60, 0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(200, 130, 60, 0); }
+}
+
+.voice-ripple {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  border: 1px solid rgba(200, 130, 60, 0.25);
+  animation: ripple 1.8s ease-out infinite;
+}
+
+.voice-ripple:nth-child(2) {
+  border-color: rgba(200, 130, 60, 0.18);
+  animation-delay: 0.6s;
+}
+
+/* ============================================================
+   SVG ICONS
+   ============================================================ */
+   /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.icon-sm {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+/* author-link: https://github.com/YU123-ZZZ */
+
+.icon-xs {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+/* ============================================================
+   RESPONSIVE — 小屏手机 (≤375px)
+   iPhone SE / 12 mini / 13 mini
+   ============================================================ */
+   /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+@media (max-width: 375px) {
+  .main-content {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .header {
+    padding-top: 1.25rem;
+    padding-bottom: 0.375rem;
+  }
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+
+  .logo-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.75rem;
+  }
+
+  .logo-emoji {
+    font-size: 1rem;
+    /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  }
+
+  .app-title {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.08em;
+  }
+
+  .app-subtitle {
+    font-size: 8px;
+    letter-spacing: 0.15em;
+  }
+
+  .header-actions {
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+    gap: 0.25rem;
+  }
+
+  .icon-btn {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .icon-btn .icon {
+  /* author-link: https://github.com/YU123-ZZZ */
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .header-toggle-btn {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.625rem;
+  }
+
+  .text-area-custom {
+    font-size: 0.9375rem;
+  }
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+  .privacy-hint {
+    font-size: 9px;
+  }
+
+  .destroy-buttons {
+    gap: 0.375rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+  }
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+
+  .btn-destroy {
+    min-height: 3.25rem;
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.75rem;
+  }
+
+  .btn-destroy .icon {
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .btn-destroy .icon-label {
+    gap: 0.25rem;
+  }
+
+  .btn-destroy .sub-label {
+    display: none;
+  }
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+  .footer p {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+
+  .feedback-text {
+    font-size: 1.375rem;
+    line-height: 1.75rem;
+    /* author-link: https://github.com/YU123-ZZZ */
+  }
+
+  .feedback-content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .modal-panel {
+    max-height: 85vh;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 1rem;
+  }
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+  .history-float-container {
+    height: 220px;
+  }
+
+  .about-body {
+    padding: 0.75rem 1rem;
+    max-height: none;
+    /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  }
+
+  .about-paragraph {
+    font-size: 0.8125rem;
+  }
+
+  .lang-list {
+    gap: 0.375rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .lang-btn {
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+    padding: 0.5rem 0.625rem;
+    font-size: 0.8125rem;
+  }
+
+  .drift-bottle-svg {
+    width: 80px;
+    height: 120px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — 普通手机 (376-428px)
+   iPhone 13/14/15 / 主流 Android
+   ============================================================ */
+   /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+@media (min-width: 376px) and (max-width: 428px) {
+  .btn-destroy {
+    min-height: 3.4rem;
+    padding: 0.7rem 1rem;
+    font-size: 0.9375rem;
+  }
+
+  .btn-destroy .sub-label {
+  /* author-link: https://github.com/YU123-ZZZ */
+    font-size: 8px;
+  }
+
+  .destroy-buttons {
+    gap: 0.5rem;
+  }
+
+  .footer p {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+}
+
+/* ============================================================
+   RESPONSIVE — 大屏手机 / 小平板 (429-640px)
+   iPhone Pro Max / 大屏 Android / iPad mini 竖屏
+   ============================================================ */
+
+@media (min-width: 429px) and (max-width: 640px) {
+/* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  .main-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .btn-destroy {
+    min-height: 3.4rem;
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+  }
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+  .logo-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .app-title {
+    font-size: 1.25rem;
+    /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+    line-height: 1.75rem;
+    letter-spacing: 0.1em;
+  }
+
+  .app-subtitle {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+  }
+
+  .header-actions {
+    gap: 0.375rem;
+  }
+  /* author-link: https://github.com/YU123-ZZZ */
+
+  .icon-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .header-toggle-btn {
+    padding: 0.35rem 0.58rem;
+    font-size: 0.6875rem;
+  }
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+  .header {
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .destroy-buttons {
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+    gap: 0.625rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .footer p {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+  }
+
+  .feedback-text {
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+    font-size: 1.75rem;
+    line-height: 2rem;
+  }
+
+  .feedback-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .feedback-hint {
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+    font-size: 10px;
+  }
+
+  .icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .icon-sm {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .btn-destroy .sub-label {
+  /* author-link: https://github.com/YU123-ZZZ */
+    font-size: 8px;
+  }
+
+  .voice-btn {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .modal-panel {
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+    max-height: 80vh;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
+
+  .history-float-container {
+    height: 260px;
+  }
+
+  .history-float-msg {
+    padding: 1rem 1.25rem;
+    font-size: 0.9375rem;
+    /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  }
+
+  .about-body {
+    padding: 1rem 1.25rem;
+  }
+
+  .about-paragraph {
+    font-size: 0.875rem;
+  }
+
+  .lang-list {
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .lang-btn {
+    padding: 0.625rem 0.875rem;
+  }
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+}
+
+/* ============================================================
+   RESPONSIVE — 平板竖屏 (641-768px)
+   iPad mini / iPad 竖屏
+   ============================================================ */
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .main-content {
+    max-width: 48rem;
+    padding-left: 2rem;
+    /* author-link: https://github.com/YU123-ZZZ */
+    padding-right: 2rem;
+  }
+
+  .app-title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .btn-destroy {
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+
+  .feedback-text {
+    font-size: 2rem;
+    line-height: 1.4;
+  }
+
+  .modal-panel {
+    max-width: 24rem;
+  }
+
+  .history-float-container {
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+    height: 300px;
+  }
+
+}
+
+/* ============================================================
+   RESPONSIVE — 平板横屏 / 桌面 (769-1024px)
+   iPad Air / iPad Pro 竖屏
+   ============================================================ */
+   /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main-content {
+    max-width: 52rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .app-title {
+    font-size: 1.625rem;
+    line-height: 2.125rem;
+  }
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+
+  .btn-destroy {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .feedback-text {
+    font-size: 2.25rem;
+    line-height: 1.3;
+  }
+  /* author-link: https://github.com/YU123-ZZZ */
+
+  .modal-panel {
+    max-width: 26rem;
+  }
+
+  .history-float-container {
+    height: 350px;
+    /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  }
+
+}
+
+/* ============================================================
+   RESPONSIVE — 大屏桌面 (≥1025px)
+   ============================================================ */
+
+@media (min-width: 1025px) {
+  .main-content {
+    max-width: 56rem;
+    /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .app-title {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    letter-spacing: 0.2em;
+  }
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+  .app-subtitle {
+    font-size: 11px;
+  }
+
+  .btn-destroy {
+    padding: 1rem 1.75rem;
+    font-size: 1.0625rem;
+  }
+
+  .feedback-text {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  }
+
+  .modal-panel {
+    max-width: 28rem;
+  }
+
+  .history-float-container {
+    height: 400px;
+    /* author-link: https://github.com/YU123-ZZZ */
+  }
+
+}
+
+@media (min-width: 641px) and (max-width: 800px) {
+  html[lang="ru"] .header {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  html[lang="ru"] .header-actions {
+    flex: 1 1 100%;
+    /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-tool-label {
+    font-size: 0.68rem;
+  }
+
+  .header-tool-btn,
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+  .voice-btn {
+    width: auto;
+    min-height: 2rem;
+    padding: 0 0.45rem;
+    gap: 0.22rem;
+  }
+
+  .voice-lang-btn {
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+    min-height: 2rem;
+    max-width: 5.9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  html[lang="ru"] .voice-lang-btn {
+    max-width: 6.35rem;
+  }
+
+  .voice-lang-menu {
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+    right: auto;
+    left: 1.5rem;
+    max-width: min(15rem, calc(100vw - 2rem));
+  }
+
+  .drift-sea {
+    top: 63%;
+    width: min(88vw, 25rem);
+    height: 5.5rem;
+    /* author-link: https://github.com/YU123-ZZZ */
+  }
+
+  .header {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  .header-actions {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    flex: 1 1 100%;
+    column-gap: 0.375rem;
+    row-gap: 0.375rem;
+    justify-content: flex-start;
+  }
+
+  .destroy-section {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .destroy-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    gap: 0.5rem;
+  }
+
+  .btn-destroy {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .header-logo {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .header-actions {
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    row-gap: 0.375rem;
+  }
+
+  .about-trigger {
+    width: auto;
+    /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+  }
+
+  .about-feature-list {
+    grid-template-columns: 1fr;
+  }
+
+  .about-tabs {
+    gap: 0.5rem;
+    padding: 0.65rem 0.75rem 0;
+  }
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+
+  .about-tab {
+    min-height: 2.45rem;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.84rem;
+  }
+
+  .about-body {
+    padding: 0.75rem;
+    max-height: none;
+    /* version-link: https://github.com/YU123-ZZZ/emotion-recycler */
+  }
+
+  .about-section {
+    padding: 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+/* author-link: https://github.com/YU123-ZZZ */
+  .bg-blob,
+  .voice-ripple,
+  .pulse-ring,
+  .screen-shake {
+    animation: none !important;
+  }
+
+  .input-section,
+  .destroy-section,
+  .about-tab,
+  .icon-btn,
+  /* forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 */
+  .btn-destroy,
+  .voice-lang-btn,
+  .voice-lang-option {
+    transition-duration: 0.01ms !important;
+  }
+
+  .drift-sea-wave {
+    animation: none;
+  }
+  /* version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ */
+
+  .drift-bottle.throwing {
+    animation-timing-function: linear;
+  }
+}
+
+/* ============================================================
+   UTILITY: border
+   ============================================================ */
+
+.border { border-width: 1px; border-style: solid; }

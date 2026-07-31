@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#f5edd6" />
+  <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="description" content="Write it out, then let it go. Local-first with optional drafts." />
+  <meta property="og:title" content="情绪回收站 — Emotion Recycler" />
+  <meta property="og:description" content="Write it out, then let it go. Local-first with optional drafts." />
+  <meta property="og:type" content="website" />
+  <title>情绪回收站</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+  <!-- author-link: https://github.com/YU123-ZZZ -->
+  <link rel="stylesheet" href="css/style.css?v=20260731a" />
+  <style>body { background: #f5edd6; }</style>
+</head>
+<body>
+  <div id="app" class="app-container">
+
+    <!-- Background glow blobs -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <!-- forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 -->
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- SVG noise texture overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Main content -->
+    <div class="main-content">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="header-logo">
+          <div class="logo-icon"><span class="logo-emoji">🗑️</span></div>
+          <div>
+          <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ -->
+            <h1 id="appTitle" class="app-title shimmer-text"></h1>
+            <p id="appSubtitle" class="app-subtitle"></p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <!-- About button -->
+          <button id="aboutBtn" class="icon-btn about-trigger" aria-label="About" title="关于情绪回收站">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 -->
+            <span id="aboutBtnLabel" class="about-trigger-label"></span>
+          </button>
+          <!-- Save draft toggle -->
+          <div class="header-toggle" id="saveToggle">
+            <button id="toggleSaveOn" class="header-toggle-btn active" data-save="on"></button>
+            <button id="toggleSaveOff" class="header-toggle-btn" data-save="off"></button>
+          </div>
+          <!-- Language button -->
+          <button id="langBtn" class="icon-btn header-tool-btn" aria-label="Language" title="语言选择">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            <span id="langBtnLabel" class="header-tool-label"></span>
+          </button>
+          <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler -->
+          <!-- History button -->
+          <button id="historyBtn" class="icon-btn header-tool-btn" aria-label="History" title="历史记录">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+            <span id="historyBtnLabel" class="header-tool-label"></span>
+          </button>
+          <!-- Voice button -->
+          <div id="voiceControl" class="voice-control" style="display:none">
+            <button id="voiceBtn" class="icon-btn voice-btn" aria-label="Voice input">
+              <svg id="voiceIconMic" class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+              <svg id="voiceIconMicOff" class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="2" x2="22" y1="2" y2="22"/><path d="M18.89 13.23A7.12 7.12 0 0 0 19 12v-2"/><path d="M5 10v2a7 7 0 0 0 12 5"/><path d="M15 9.34V5a3 3 0 0 0-5.68-1.33"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+              <!-- author-link: https://github.com/YU123-ZZZ -->
+              <span id="voiceBtnLabel" class="header-tool-label"></span>
+            </button>
+            <button id="voiceLangBtn" class="voice-lang-btn" type="button" aria-haspopup="menu" aria-expanded="false">
+              <span id="voiceLangCurrent"></span>
+              <span aria-hidden="true">v</span>
+            </button>
+            <div id="voiceLangMenu" class="voice-lang-menu" role="menu" style="display:none"></div>
+            <!-- forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 -->
+          </div>
+        </div>
+      </header>
+
+      <!-- Input area -->
+      <div id="inputSection" class="input-section">
+        <div id="inputContainer" class="input-container">
+          <textarea id="textarea" class="text-area-custom" placeholder=""></textarea>
+          <div class="input-gradient-top"></div>
+          <div class="input-gradient-bottom"></div>
+          <div id="privacyHint" class="privacy-hint"></div>
+          <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ -->
+          <div id="charCount" class="char-count" aria-live="polite">
+            <span class="char-count-icon" aria-hidden="true">⌨</span>
+            <span id="charCountNum" class="char-count-num">0 / 10000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Destroy buttons -->
+      <div id="destroySection" class="destroy-section">
+      <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 -->
+        <div class="destroy-buttons" role="group" aria-label="Destroy modes">
+          <button class="btn-destroy btn-shred border" data-mode="shred">
+            <span class="icon-label neon-text-shred">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>
+              <span id="shredLabel" class="font-display"></span>
+            </span>
+            <span id="shredSub" class="sub-label"></span>
+          </button>
+          <button class="btn-destroy btn-burn border" data-mode="burn">
+            <span class="icon-label neon-text-burn">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+              <span id="burnLabel" class="font-display"></span>
+            </span>
+            <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler -->
+            <span id="burnSub" class="sub-label"></span>
+          </button>
+          <button class="btn-destroy btn-flush border" data-mode="flush">
+            <span class="icon-label neon-text-flush">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 14.69c1.47 0 2.67-1.22 2.67-2.73 0-.78-.38-1.52-1.15-2.14S12.73 8.28 12.56 7.4c-.19.98-.77 1.91-1.54 2.53s-1.15 1.36-1.15 2.13c0 1.51 1.2 2.73 2.69 2.63z"/><path d="M17 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S17.29 6.75 17 5.3c-.29 1.45-1.14 2.84-2.29 3.76S13 11.1 13 12.25c0 2.22 1.8 4.05 4 4.05z"/></svg>
+              <span id="flushLabel" class="font-display"></span>
+            </span>
+            <span id="flushSub" class="sub-label"></span>
+            <!-- author-link: https://github.com/YU123-ZZZ -->
+          </button>
+          <button class="btn-destroy btn-drift border" data-mode="drift">
+            <span class="icon-label neon-text-drift">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>
+              <span id="driftLabel" class="font-display"></span>
+            </span>
+            <span id="driftSub" class="sub-label"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+      <!-- forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 -->
+        <p id="footerText"></p>
+      </footer>
+
+    </div>
+
+    <!-- Canvas container for particle effects -->
+    <div id="canvasContainer" class="canvas-container"></div>
+
+    <!-- Flash overlay -->
+    <div id="flashOverlay" class="flash-overlay" style="display:none"></div>
+    <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ -->
+
+    <!-- Feedback overlay -->
+    <div id="feedbackOverlay" class="feedback-overlay" style="display:none" role="alert" aria-live="polite">
+      <div id="feedbackContent" class="feedback-content">
+        <div class="feedback-text-wrapper">
+          <div class="feedback-glow"></div>
+          <p id="feedbackText" class="feedback-text"></p>
+          <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 -->
+        </div>
+        <div class="feedback-dots">
+          <div class="feedback-dot" style="animation-delay:0s"></div>
+          <div class="feedback-dot" style="animation-delay:0.6s"></div>
+          <div class="feedback-dot" style="animation-delay:1.2s"></div>
+          <div class="feedback-dot" style="animation-delay:1.8s"></div>
+          <div class="feedback-dot" style="animation-delay:2.4s"></div>
+        </div>
+        <p id="feedbackHint" class="feedback-hint"></p>
+      </div>
+    </div>
+    <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler -->
+
+    <!-- Drift bottle overlay -->
+    <div id="driftOverlay" class="drift-overlay" style="display:none">
+      <div class="drift-backdrop"></div>
+      <div id="driftContent" class="drift-content">
+        <div id="driftSea" class="drift-sea" aria-hidden="true">
+          <span class="drift-sea-shine"></span>
+          <span class="drift-sea-wave drift-sea-wave-1"></span>
+          <span class="drift-sea-wave drift-sea-wave-2"></span>
+          <!-- author-link: https://github.com/YU123-ZZZ -->
+          <span class="drift-sea-wave drift-sea-wave-3"></span>
+        </div>
+        <!-- Phase 1+2: Paper -->
+        <div id="driftPaper" class="drift-paper">
+          <div id="driftPaperInner" class="drift-paper-inner">
+            <p id="driftPaperText" class="drift-paper-text"></p>
+          </div>
+        </div>
+        <!-- Phase 3: Bottle -->
+        <div id="driftBottle" class="drift-bottle" style="display:none">
+          <svg viewBox="0 0 64 96" class="drift-bottle-svg">
+            <rect x="16" y="32" width="32" height="52" rx="8" fill="rgba(180,210,200,0.4)" stroke="rgba(100,150,130,0.5)" stroke-width="1.5"/>
+            <rect x="24" y="16" width="16" height="20" rx="4" fill="rgba(180,210,200,0.4)" stroke="rgba(100,150,130,0.5)" stroke-width="1.5"/>
+            <!-- forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 -->
+            <rect x="22" y="12" width="20" height="8" rx="3" fill="rgba(180,210,200,0.5)" stroke="rgba(100,150,130,0.5)" stroke-width="1.5"/>
+            <rect id="driftCork" x="24" y="6" width="16" height="10" rx="3" fill="#c4a87a" stroke="#a08860" stroke-width="1"/>
+            <g id="driftScrollInBottle" opacity="0">
+              <rect x="27.5" y="38" width="9" height="30" rx="4.5" fill="url(#scrollBody)" stroke="#c9b789" stroke-width="0.8"/>
+              <ellipse cx="32" cy="67.5" rx="4.3" ry="3.5" fill="#eadfbe" stroke="#c5b281" stroke-width="0.7"/>
+              <ellipse cx="32" cy="67.5" rx="2.3" ry="1.8" fill="none" stroke="#bba773" stroke-width="0.55"/>
+              <defs>
+                <linearGradient id="scrollBody" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#fff9e8"/>
+                  <stop offset="0.48" stop-color="#e2d3aa"/>
+                  <stop offset="1" stop-color="#bca875"/>
+                </linearGradient>
+              </defs>
+            </g>
+          </svg>
+        </div>
+        <!-- Phase 4: Done text -->
+        <div id="driftDone" class="drift-done-phase" style="display:none">
+          <div class="drift-waves-container">
+          <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ -->
+            <svg class="drift-waves-large" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>
+            <div class="drift-ripple drift-ripple-1"></div>
+            <div class="drift-ripple drift-ripple-2"></div>
+          </div>
+          <p id="driftDoneText" class="drift-done-text"></p>
+          <p id="driftSubtext" class="drift-subtext"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- History panel -->
+    <div id="historyPanel" class="modal-overlay" style="display:none" role="dialog" aria-modal="true">
+    <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 -->
+      <div class="modal-backdrop"></div>
+      <div class="modal-panel history-panel">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-title-group">
+              <svg class="icon modal-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+              <h2 id="historyTitle" class="modal-title"></h2>
+            </div>
+            <button id="historyClose" class="modal-close" aria-label="Close">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler -->
+            </button>
+          </div>
+          <div class="history-privacy-badge">
+            <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <p id="historyPrivacy" class="history-privacy-text"></p>
+          </div>
+          <div class="history-list">
+          <!-- author-link: https://github.com/YU123-ZZZ -->
+            <div id="historyList" class="history-items"></div>
+          </div>
+          <div class="history-footer">
+            <p id="historyFooterText"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Language panel -->
+    <div id="languagePanel" class="modal-overlay" style="display:none" role="dialog" aria-modal="true">
+    <!-- forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 -->
+      <div class="modal-backdrop"></div>
+      <div class="modal-panel language-panel">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-title-group">
+              <svg class="icon modal-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              <h2 id="langTitle" class="modal-title"></h2>
+            </div>
+            <button id="langClose" class="modal-close" aria-label="Close">
+            <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ -->
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+          </div>
+          <div id="langList" class="lang-list" role="radiogroup"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About panel -->
+    <div id="aboutPanel" class="modal-overlay" style="display:none" role="dialog" aria-modal="true">
+      <div class="modal-backdrop"></div>
+      <div class="modal-panel about-panel">
+        <div class="modal-content">
+        <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 -->
+          <div class="modal-header">
+            <div class="modal-title-group">
+              <svg class="icon modal-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <h2 id="aboutTitle" class="modal-title"></h2>
+            </div>
+            <button id="aboutClose" class="modal-close" aria-label="Close">
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler -->
+          </div>
+          <div class="about-tabs" role="tablist" aria-label="About sections">
+            <button id="aboutSiteTab" class="about-tab active" type="button" role="tab" aria-selected="true" aria-controls="aboutSitePanel">
+              <span id="aboutSiteTitle"></span>
+            </button>
+            <button id="aboutFeaturesTab" class="about-tab" type="button" role="tab" aria-selected="false" aria-controls="aboutFeaturesPanel">
+              <span id="aboutFeaturesTitle"></span>
+            </button>
+          </div>
+          <div class="about-body">
+            <section id="aboutSitePanel" class="about-section about-site-section" role="tabpanel" aria-labelledby="aboutSiteTab">
+              <p id="aboutText1" class="about-paragraph"></p>
+              <!-- author-link: https://github.com/YU123-ZZZ -->
+              <p id="aboutText2" class="about-paragraph about-feature-intro"></p>
+              <p id="aboutText3" class="about-paragraph about-belief"></p>
+              <p id="aboutAuthor" class="about-paragraph about-author"></p>
+              <p id="aboutDonate" class="about-paragraph about-donate"></p>
+              <div class="about-qrcode">
+                <img src="public/WAQR.png" alt="WeChat QR Code" class="about-qrcode-img" draggable="false" />
+                <span class="about-qrcode-shield" aria-hidden="true"></span>
+              </div>
+            </section>
+
+            <section id="aboutFeaturesPanel" class="about-section about-features-section" role="tabpanel" aria-labelledby="aboutFeaturesTab" hidden>
+            <!-- forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 -->
+              <div class="about-feature-list">
+                <article class="about-feature-item feature-capacity">
+                  <span class="about-feature-icon">字</span>
+                  <div><h4 id="aboutCapacityTitle"></h4><p id="aboutCapacityDesc"></p></div>
+                </article>
+                <article class="about-feature-item feature-language">
+                  <span class="about-feature-icon">文</span>
+                  <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler | author: https://github.com/YU123-ZZZ -->
+                  <div><h4 id="aboutFeatureLanguageTitle"></h4><p id="aboutFeatureLanguageDesc"></p></div>
+                </article>
+                <article class="about-feature-item feature-shred">
+                  <span class="about-feature-icon">✂</span>
+                  <div><h4 id="aboutFeatureShredTitle"></h4><p id="aboutFeatureShredDesc"></p></div>
+                </article>
+                <article class="about-feature-item feature-burn">
+                  <span class="about-feature-icon">♨</span>
+                  <div><h4 id="aboutFeatureBurnTitle"></h4><p id="aboutFeatureBurnDesc"></p></div>
+                </article>
+                <article class="about-feature-item feature-flush">
+                <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler | forum: https://www.52pojie.cn/home.php?mod=space&uid=2394304 -->
+                  <span class="about-feature-icon">◉</span>
+                  <div><h4 id="aboutFeatureFlushTitle"></h4><p id="aboutFeatureFlushDesc"></p></div>
+                </article>
+                <article class="about-feature-item feature-drift">
+                  <span class="about-feature-icon">≋</span>
+                  <div><h4 id="aboutFeatureDriftTitle"></h4><p id="aboutFeatureDriftDesc"></p></div>
+                </article>
+                <article class="about-feature-item feature-voice">
+                  <span class="about-feature-icon">◌</span>
+                  <!-- version-link: https://github.com/YU123-ZZZ/emotion-recycler -->
+                  <div><h4 id="aboutFeatureVoiceTitle"></h4><p id="aboutFeatureVoiceDesc"></p></div>
+                </article>
+                <article class="about-feature-item feature-save">
+                  <span class="about-feature-icon">◇</span>
+                  <div><h4 id="aboutFeatureSaveTitle"></h4><p id="aboutFeatureSaveDesc"></p></div>
+                </article>
+                <article class="about-feature-item feature-tech">
+                  <span class="about-feature-icon">&lt;/&gt;</span>
+                  <div><h4 id="aboutFeatureTechTitle"></h4><p id="aboutFeatureTechDesc"></p></div>
+                </article>
+              </div>
+              <p id="aboutReadmeLink" class="about-readme-link"></p>
+            </section>
+            <!-- author-link: https://github.com/YU123-ZZZ -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/i18n.js?v=20260731b"></script>
+  <!-- forum-link: https://www.52pojie.cn/home.php?mod=space&uid=2394304 -->
+  <script src="js/utils.js?v=20260731b"></script>
+  <script src="js/particles.js?v=20260731b"></script>
+  <script src="js/app.js?v=20260731b"></script>
+</body>
+</html>
